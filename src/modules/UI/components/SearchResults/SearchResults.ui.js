@@ -45,6 +45,7 @@ export default class SearchResults extends Component<Props, State> {
     } else {
       searchResultsHeight = this.props.height
     }
+    const top = scale(PLATFORM.toolbarHeight + this.props.extraTopSpace)
     return (
       <View
         style={[
@@ -52,7 +53,7 @@ export default class SearchResults extends Component<Props, State> {
           {
             height: searchResultsHeight,
             width: PLATFORM.deviceWidth,
-            top: scale(PLATFORM.toolbarHeight + this.props.extraTopSpace),
+            top: Number.isNaN(top) ? 0 : top,
             zIndex: 999
           },
           this.props.containerStyle
